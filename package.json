@@ -1,0 +1,20 @@
+{
+  "name": "dmarc-report-collector.gs",
+  "version": "0.1.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@google/clasp": "^2.4.2",
+    "typescript": "^5.5.4"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.3",
+    "@types/google-apps-script": "^1.0.83",
+    "vite": "^5.4.2"
+  }
+}
