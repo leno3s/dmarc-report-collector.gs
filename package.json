@@ -15,6 +15,9 @@
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",
     "@types/google-apps-script": "^1.0.83",
-    "vite": "^5.4.2"
+    "@types/xmldom": "^0.1.34",
+    "fs": "^0.0.1-security",
+    "vitest": "^2.0.5",
+    "xmldom": "^0.6.0"
   }
 }
