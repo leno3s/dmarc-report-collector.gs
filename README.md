@@ -19,5 +19,5 @@ Loader and Importer for DMARC Reports with Gmail and Google spreadsheet on Googl
 
 ## Output schema
 
-| version | reporter org | email | extra contact info | report id | begin date | end date | policy domain | adkim | aspf | p   | sp  | pct | fo  | np  | record source ip | disposition | dkim | spf | reason type | comment | envelope to | envelope from | header from | dkim domain | result | selector | human result | spf domain | result | scope |
-| ---     | ---          | ---   | ---                | ---       | ---        | ---      | ---           | ---   | ---  | --- | --- | --- | --- | --- | ---              | ---         | ---  | --- | ---         | ---     | ---         | ---           | ---         | ---         | ---    | ---      | ---          | ---        | ---    | ---   |
+| version | reporter org | email | extra contact info | report id | begin date | end date | policy domain | adkim | aspf | p   | sp  | pct | fo  | np  | record source ip | count | disposition | dkim | spf | reason type | comment | envelope to | envelope from | header from | dkim domain | result | selector | human result | spf domain | result | scope |
+| ---     | ---          | ---   | ---                | ---       | ---        | ---      | ---           | ---   | ---  | --- | --- | --- | --- | --- | ---              | ---   | ---         | ---  | --- | ---         | ---     | ---         | ---           | ---         | ---         | ---    | ---      | ---          | ---        | ---    | ---   |
