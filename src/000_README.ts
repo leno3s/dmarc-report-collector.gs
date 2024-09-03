@@ -4,9 +4,8 @@
  * 
  * If you find any bugs, please report them here.
  *   https://github.com/leno3s/dmarc-report-collector.gs/issues
- */
-
-/**
+ *
+ *
  * Setup to use:
  * 
  * 1. Configure timezone from project settings page if you want.
