@@ -1,17 +1,21 @@
 import { config } from "../001_config";
 import type { DmarcReport } from "../model/dmarcReport";
+import { DmarcReportNormalizer } from "../presentation/DmarcReportNormalizer";
 import type { IDmarcReportNormalizer } from "../presentation/IDmarcReportNormalizer";
 import type { IOutputTableRepository } from "./IOutputTableRepository";
 
 export class OutputSheetRepository implements IOutputTableRepository {
   private readonly spreadsheet: GoogleAppsScript.Spreadsheet.Spreadsheet;
   private readonly sheet: GoogleAppsScript.Spreadsheet.Sheet;
+  private readonly normalizer: IDmarcReportNormalizer;
+  constructor(normalizer?: IDmarcReportNormalizer) {
+    this.normalizer = normalizer ? normalizer : new DmarcReportNormalizer();
 
-  constructor(private readonly normalizer: IDmarcReportNormalizer) {
     console.log(
       `[OutputSheetRepository#constructor] Open spreadsheet with id: ${config.outputSpreadsheetId}`
     );
     this.spreadsheet = SpreadsheetApp.openById(config.outputSpreadsheetId);
+
     console.log(
       `[OutputSheetRepository#constructor] Open sheet with name: ${config.outputSheetName}`
     );

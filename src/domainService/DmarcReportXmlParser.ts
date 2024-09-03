@@ -19,14 +19,21 @@ import type {
   SpfDomainScope
 } from "../model/types";
 import type { IXmlParseEngine } from "./IXmlParseEngine";
+import { XmlParseGasEngine } from "./XmlParseGasEngine";
 
 export class DmarcReportXmlParser {
+  private readonly engine: IXmlParseEngine<
+    Element | GoogleAppsScript.XML_Service.Element,
+    Document | GoogleAppsScript.XML_Service.Document
+  >;
   constructor(
-    private readonly engine: IXmlParseEngine<
+    engine?: IXmlParseEngine<
       Element | GoogleAppsScript.XML_Service.Element,
       Document | GoogleAppsScript.XML_Service.Document
     >
-  ) {}
+  ) {
+    this.engine = engine ? engine : new XmlParseGasEngine();
+  }
   /**
    * Parse DMARC Report from XML to Object.
    * @param xmlBody

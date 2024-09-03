@@ -1,9 +1,28 @@
 import { config } from "../001_config";
 import { DmarcReportXmlParser } from "../domainService/DmarcReportXmlParser";
+import type { IXmlParseEngine } from "../domainService/IXmlParseEngine";
+import { XmlParseGasEngine } from "../domainService/XmlParseGasEngine";
 import type { DmarcReport } from "../model/dmarcReport";
 import type { IDmarcReportRepository } from "./IDmarcReportRepository";
 
 export class GmailDmarcReportRepository implements IDmarcReportRepository {
+  private readonly engine: IXmlParseEngine<
+    GoogleAppsScript.XML_Service.Element,
+    GoogleAppsScript.XML_Service.Document
+  >;
+  constructor(
+    engine?: IXmlParseEngine<
+      GoogleAppsScript.XML_Service.Element,
+      GoogleAppsScript.XML_Service.Document
+    >
+  ) {
+    if (engine) {
+      this.engine = engine;
+    } else {
+      this.engine = new XmlParseGasEngine();
+    }
+  }
+
   public getDmarcReports(): DmarcReport[] {
     // query documentation: https://support.google.com/mail/answer/7190
     const query = `in:inbox to: ${config.targetDestinationAddress}`;
@@ -37,7 +56,7 @@ export class GmailDmarcReportRepository implements IDmarcReportRepository {
       .filter((r): r is Exclude<typeof r, undefined> => r !== undefined);
     console.log(`[GmailRepository] found ${xmls.length} reports.`);
 
-    const parser = new DmarcReportXmlParser();
+    const parser = new DmarcReportXmlParser(this.engine);
     const reports = xmls.map((xml) => parser.parse(xml));
 
     if (config.isArchiveLoadedEmail) {

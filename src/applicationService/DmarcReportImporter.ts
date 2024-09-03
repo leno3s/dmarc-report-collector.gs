@@ -1,11 +1,22 @@
+import { GmailDmarcReportRepository } from "../repository/GmailDmarcReportRepository";
 import type { IDmarcReportRepository } from "../repository/IDmarcReportRepository";
 import type { IOutputTableRepository } from "../repository/IOutputTableRepository";
+import { OutputSheetRepository } from "../repository/OutputSheetRepository";
 
 export class DmarcReportImporter {
+  private readonly inputRepository: IDmarcReportRepository;
+  private readonly outputRepository: IOutputTableRepository;
   constructor(
-    private readonly inputRepository: IDmarcReportRepository,
-    private readonly outputRepository: IOutputTableRepository
-  ) {}
+    inputRepository?: IDmarcReportRepository,
+    outputRepository?: IOutputTableRepository
+  ) {
+    this.inputRepository = inputRepository
+      ? inputRepository
+      : new GmailDmarcReportRepository();
+    this.outputRepository = outputRepository
+      ? outputRepository
+      : new OutputSheetRepository();
+  }
 
   /**
    * Import to output repository from xml reports.
