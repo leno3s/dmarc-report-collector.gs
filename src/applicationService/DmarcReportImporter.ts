@@ -12,9 +12,13 @@ export class DmarcReportImporter {
    */
   execute() {
     const reports = this.inputRepository.getDmarcReports();
-    console.log(`[DmarcReportImporter#execute] Loaded ${reports.length} reports.`)
+    console.log(
+      `[DmarcReportImporter#execute] Loaded ${reports.length} reports.`
+    );
     if (reports.length <= 0) {
-      console.log("[DmarcReportImporter#execute] There are not new DMARC report. exit.");
+      console.log(
+        "[DmarcReportImporter#execute] There are not new DMARC report. exit."
+      );
     }
     this.outputRepository.save(reports);
   }

@@ -6,7 +6,9 @@ import type {
 
 export class DmarcReportNormalizer implements IDmarcReportNormalizer {
   execute(dmarcReport: DmarcReport): DmarcReportNormalized[] {
-    console.log(`[DmarcReportNormalizer#execute] Received report have ${dmarcReport.records.length} records.`);
+    console.log(
+      `[DmarcReportNormalizer#execute] Received report have ${dmarcReport.records.length} records.`
+    );
     return dmarcReport.records.map((record) => {
       return [
         dmarcReport.version ?? "",

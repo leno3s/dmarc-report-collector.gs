@@ -1,5 +1,5 @@
-import type { DispositionType, DmarcResultType } from "./types";
 import type { DmarcPolicyOverrideReason } from "./dmarcPolicyReason";
+import type { DispositionType, DmarcResultType } from "./types";
 
 /**
  * Taking into account everything else in the record, the results of applying DMARC.
