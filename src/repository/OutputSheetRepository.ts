@@ -1,4 +1,4 @@
-import { config } from "../001_config";
+import { Config } from "../001_config";
 import type { DmarcReport } from "../model/dmarcReport";
 import { DmarcReportNormalizer } from "../presentation/DmarcReportNormalizer";
 import type { IDmarcReportNormalizer } from "../presentation/IDmarcReportNormalizer";
@@ -12,16 +12,22 @@ export class OutputSheetRepository implements IOutputTableRepository {
     this.normalizer = normalizer ? normalizer : new DmarcReportNormalizer();
 
     console.log(
-      `[OutputSheetRepository#constructor] Open spreadsheet with id: ${config.outputSpreadsheetId}`
+      `[OutputSheetRepository#constructor] Open spreadsheet with id: ${Config.outputSpreadsheetId}`
     );
-    this.spreadsheet = SpreadsheetApp.openById(config.outputSpreadsheetId);
+    this.spreadsheet = SpreadsheetApp.openById(
+      Config.outputSpreadsheetId
+    );
 
     console.log(
-      `[OutputSheetRepository#constructor] Open sheet with name: ${config.outputSheetName}`
+      `[OutputSheetRepository#constructor] Open sheet with name: ${Config.outputSheetName}`
     );
-    const sheet = this.spreadsheet.getSheetByName(config.outputSheetName);
+    const sheet = this.spreadsheet.getSheetByName(
+      Config.outputSheetName
+    );
     if (!sheet) {
-      throw new Error(`Can't opened output sheet ${config.outputSheetName}`);
+      throw new Error(
+        `Can't opened output sheet ${Config.outputSheetName}`
+      );
     }
     this.sheet = sheet;
   }

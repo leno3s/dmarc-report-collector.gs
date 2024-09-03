@@ -1,4 +1,4 @@
-import { config } from "../001_config";
+import { Config } from "../001_config";
 import { DmarcReportXmlParser } from "../domainService/DmarcReportXmlParser";
 import type { IXmlParseEngine } from "../domainService/IXmlParseEngine";
 import { XmlParseGasEngine } from "../domainService/XmlParseGasEngine";
@@ -25,7 +25,7 @@ export class GmailDmarcReportRepository implements IDmarcReportRepository {
 
   public getDmarcReports(): DmarcReport[] {
     // query documentation: https://support.google.com/mail/answer/7190
-    const query = `in:inbox to: ${config.targetDestinationAddress}`;
+    const query = `in:inbox to: ${Config.targetDestinationAddress}`;
     console.log(
       `[GmailRepository] search mails with report by query: ${query}`
     );
@@ -59,7 +59,7 @@ export class GmailDmarcReportRepository implements IDmarcReportRepository {
     const parser = new DmarcReportXmlParser(this.engine);
     const reports = xmls.map((xml) => parser.parse(xml));
 
-    if (config.isArchiveLoadedEmail) {
+    if (Config.isArchiveLoadedEmail) {
       GmailApp.moveThreadsToArchive(threads);
     }
 
