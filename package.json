@@ -7,9 +7,10 @@
     "format": "biome format --write ./src/**/*.ts",
     "check": "biome check --write ./src/**/*.ts"
   },
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "author": "leno3s <leno@leno3s.net>",
+  "homepage": "https://github.com/leno3s/dmarc-report-collector.gs",
+  "license": "MIT",
+  "description": "Loader and Importer for DMARC Reports with Gmail and Google spreadsheet on Google apps script.",
   "dependencies": {
     "@google/clasp": "^2.4.2",
     "typescript": "^5.5.4"
