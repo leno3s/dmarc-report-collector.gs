@@ -19,6 +19,7 @@ export class DmarcReportImporter {
       console.log(
         "[DmarcReportImporter#execute] There are not new DMARC report. exit."
       );
+      return;
     }
     this.outputRepository.save(reports);
   }
